@@ -55217,19 +55217,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400060, guid: 36bd3c4e99a744cb89c0d2bf0f617953, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.80299997
+      value: -1.78999996
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 36bd3c4e99a744cb89c0d2bf0f617953, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.80299997
+      value: -1.78999996
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 36bd3c4e99a744cb89c0d2bf0f617953, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.80299997
+      value: 1.78999996
       objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: 36bd3c4e99a744cb89c0d2bf0f617953, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.80299997
+      value: 1.78999996
       objectReference: {fileID: 0}
     - target: {fileID: 11400058, guid: 36bd3c4e99a744cb89c0d2bf0f617953, type: 2}
       propertyPath: SimpleHUD
@@ -60164,7 +60164,7 @@ MonoBehaviour:
   CameraFreezeDelay: 2.5
   VelocityMultiplier: 30
   HeadBone: {fileID: 177787042}
-  helpbox: 73
+  helpbox: 84
 --- !u!114 &1730980919
 MonoBehaviour:
   m_ObjectHideFlags: 0
