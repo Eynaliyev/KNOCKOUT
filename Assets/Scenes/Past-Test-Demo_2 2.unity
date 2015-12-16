@@ -44315,6 +44315,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5801b2e714108e4fa4504b57ace8017, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1248138598 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: 0a2c891fcce524905b7832cc90e5df55, type: 2}
+  m_PrefabInternal: {fileID: 1248682939}
+--- !u!114 &1248138599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248138598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0864031ef1d4c5d9a9fe8e3d3accd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1248682939
 Prefab:
   m_ObjectHideFlags: 0
@@ -44382,7 +44397,12 @@ Prefab:
       propertyPath: weaponHelp
       value: 265
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11400042, guid: 0a2c891fcce524905b7832cc90e5df55, type: 2}
+      propertyPath: weaponHelp
+      value: 276
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11400034, guid: 0a2c891fcce524905b7832cc90e5df55, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0a2c891fcce524905b7832cc90e5df55, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1248682940 stripped
@@ -47769,6 +47789,68 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 28104176ba8767941a96c0fe8e044a60, type: 2}
   m_PrefabInternal: {fileID: 1755839760}
+--- !u!1 &1324332757 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100012, guid: 0a2c891fcce524905b7832cc90e5df55, type: 2}
+  m_PrefabInternal: {fileID: 1248682939}
+--- !u!114 &1324332758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1324332757}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cf9c4ded4344f348c5ac53321346f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Persist: 0
+  States:
+  - TypeName: vp_FPInputMobile
+    Name: Default
+    TextAsset: {fileID: 0}
+    StatesToBlock: 
+  Children: []
+  Siblings: []
+  Family: []
+  Renderers: []
+  AudioSources: []
+  MouseLookSensitivity: {x: 5, y: 5}
+  MouseLookSmoothSteps: 10
+  MouseLookSmoothWeight: .5
+  MouseLookAcceleration: 0
+  MouseLookAccelerationThreshold: .400000006
+  MouseLookInvert: 0
+  MouseCursorZones: []
+  MouseCursorForced: 0
+  MouseCursorBlocksMouseLook: 0
+--- !u!114 &1324332759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1324332757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25bc1a2fb659d420ab4d7a3e60d13316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Persist: 0
+  States: []
+  Children: []
+  Siblings: []
+  Family: []
+  Renderers: []
+  AudioSources: []
+  MouseLookSensitivity: {x: 5, y: 5}
+  MouseLookSmoothSteps: 10
+  MouseLookSmoothWeight: .5
+  MouseLookAcceleration: 0
+  MouseLookAccelerationThreshold: .400000006
+  MouseLookInvert: 0
+  MouseCursorZones: []
+  MouseCursorForced: 0
+  MouseCursorBlocksMouseLook: 1
 --- !u!1 &1325384321
 GameObject:
   m_ObjectHideFlags: 0

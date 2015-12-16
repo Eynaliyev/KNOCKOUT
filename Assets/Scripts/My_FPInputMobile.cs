@@ -1,4 +1,16 @@
-﻿using UnityEngine;
+﻿/////////////////////////////////////////////////////////////////////////////////
+//
+//	vp_FPInputMobile.cs
+//	© VisionPunk. All Rights Reserved.
+//	https://twitter.com/VisionPunk
+//	http://www.visionpunk.com
+//
+//	description:	This extends vp_FPInput in order to override the GetButton
+//					methods and allow support for touch controls for vp_UI system
+//
+/////////////////////////////////////////////////////////////////////////////////
+
+using UnityEngine;
 using System.Collections.Generic;
 
 public class My_FPInputMobile : My_FPInput

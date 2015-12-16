@@ -18,7 +18,7 @@ public class My_FPInput : vp_Component
     //gyro variables
     private bool gyroBool;
     private Gyroscope gyro;
-    private Quaternion rotFix;
+    private Quaternion gyroInput;
     private Vector3 initial = new Vector3(90, 180, 0);
 
     // mouse look
@@ -47,11 +47,6 @@ public class My_FPInput : vp_Component
 
     // misc
     protected bool m_AllowGameplayInput = true;
-        //gyro instantiation and creation
-    void Start () {
-        GyroStart();
-    
-    }
     public bool AllowGameplayInput
     {
         get { return m_AllowGameplayInput; }
@@ -99,8 +94,6 @@ public class My_FPInput : vp_Component
     /// </summary>
     protected override void Update()
     {
-        // update gyro
-        GyroUpdate();
 
         // manage input for GUI
         UpdateCursorLock();
@@ -421,12 +414,29 @@ public class My_FPInput : vp_Component
     /// <summary>
     /// mouselook implementation with smooth filtering and acceleration
     /// </summary>
+    void Start()
+    {
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        gyroBool = SystemInfo.supportsGyroscope;
+
+        Debug.Log("gyro bool = " + gyroBool.ToString());
+
+        if (gyroBool)
+        {
+            gyroInput = Input.gyro.attitude;
+            gyro.enabled = true;
+
+        }
+        else
+        {
+            Debug.Log("No Gyro Support");
+        }
+    }
+
     protected virtual Vector2 GetMouseLook()
     {
-
-        // don't allow mouselook if we are using the mouse cursor
-        if (MouseCursorBlocksMouseLook && !vp_Utility.LockCursor)
-            return Vector2.zero;
 
         // only recalculate mouselook once per frame or smoothing will break
         if (m_LastMouseLookFrame == Time.frameCount)
@@ -436,8 +446,16 @@ public class My_FPInput : vp_Component
 
         // --- fetch mouse input ---
 
-        m_MouseLookSmoothMove.x = vp_Input.GetAxisRaw("Mouse X") * Time.timeScale;
-        m_MouseLookSmoothMove.y = vp_Input.GetAxisRaw("Mouse Y") * Time.timeScale;
+        //get gyro input
+        gyroInput = Input.gyro.attitude;
+        //extract the x and y values and store them in m_MouseLookRawMove.x and y
+
+        //updatemouselook to use that info
+
+        m_MouseLookRawMove.x = gyroInput.x;
+        m_MouseLookRawMove.y = gyroInput.y;
+
+        return m_MouseLookRawMove;
 
         // --- mouse smoothing ---
 
@@ -497,17 +515,19 @@ public class My_FPInput : vp_Component
     protected virtual Vector2 GetMouseLookRaw()
     {
 
-        // don't allow mouselook if we are using the mouse cursor
-        if (MouseCursorBlocksMouseLook && !vp_Utility.LockCursor)
-            return Vector2.zero;
 
-        m_MouseLookRawMove.x = vp_Input.GetAxisRaw("Mouse X");
-        m_MouseLookRawMove.y = vp_Input.GetAxisRaw("Mouse Y");
+        //get gyro input
+        gyroInput = Input.gyro.attitude;
+        //extract the x and y values and store them in m_MouseLookRawMove.x and y
+
+        //updatemouselook to use that info
+
+        m_MouseLookRawMove.x = gyroInput.x;
+        m_MouseLookRawMove.y = gyroInput.y;
 
         return m_MouseLookRawMove;
 
     }
-
 
     /// <summary>
     /// returns the current horizontal and vertical input vector
@@ -610,36 +630,6 @@ public class My_FPInput : vp_Component
         }
     }
 
-
-    public void GyroStart (){
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
-        gyroBool = SystemInfo.supportsGyroscope;
-
-        Debug.Log("gyro bool = " + gyroBool.ToString());
-
-        if (gyroBool)
-        {
-            gyro = Input.gyro;
-            gyro.enabled = true;
-
-            rotFix = new Quaternion(0, 0, 0.7071f, 0.7071f);
-        }
-        else
-        {
-            Debug.Log("No Gyro Support");
-        }
-    }
-
-    public void GyroUpdate () {
-    if (gyroBool)
-        {
-            var camRot = gyro.attitude * rotFix;
-            transform.eulerAngles = initial;
-            transform.localRotation *= camRot;
-        }
-    }
 
 }
 
