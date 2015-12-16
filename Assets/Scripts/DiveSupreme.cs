@@ -1,11 +1,11 @@
-//Durovis Dive Head Tracking 
+﻿//Durovis Dive Head Tracking 
 //copyright by Shoogee GmbH & Co. KG Refer to LICENCE.txt 
 using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System;
 
-public class OpenDiveSensor : MonoBehaviour
+public class DiveSupreme : MonoBehaviour
 {
 	
 	//if true, rotation of a GameObject will be added
@@ -23,13 +23,15 @@ public class OpenDiveSensor : MonoBehaviour
 	private bool mbShowErrorMessage, mbUseGyro;
 	private float q0, q1, q2, q3;
 	private float m0, m1, m2;
-	private float magnet_value = 0;
-	private int magnet_trigger = 0;
-	private int magnet_detected;
 	private Quaternion rot;
 	private Quaternion centerTransition = Quaternion.identity;
 
 	private int is_tablet;
+	//event handler
+	vp_FPPlayerEventHandler player;
+	private Quaternion raw;
+
+
 
 #if UNITY_EDITOR
 #elif UNITY_ANDROID
@@ -49,9 +51,6 @@ public class OpenDiveSensor : MonoBehaviour
 
 	[DllImport("divesensor")]
 	private static extern void set_application_name(string name);
-	
-	[DllImport("divesensor")]
-	private static extern int get_magnet(ref int detected,ref int t1,ref float t2);
 
 	[DllImport("divesensor")]
 	private static extern int get_m(ref float m0,ref float m1,ref float m2);
@@ -94,13 +93,13 @@ public class OpenDiveSensor : MonoBehaviour
 	private static extern int get_q(ref float q0,ref float q1,ref float q2,ref float q3);
 
 	[DllImport("__Internal")]	
-	private static extern int get_magnet(ref int detected,ref int t1,ref float t2);
-
-	[DllImport("__Internal")]	
 	private static extern int get_m(ref float m0,ref float m1,ref float m2);
 #endif
 	void Start()
 	{
+		//eventhandler
+		player = GameObject.FindObjectOfType<vp_FPPlayerEventHandler>();
+
 		mbShowErrorMessage = true;
 		mbUseGyro = false;
 
@@ -157,18 +156,6 @@ public class OpenDiveSensor : MonoBehaviour
 #endif
 	}
 
-	//Eventhandler for Magnet Trigger; example usage:
-	//private void myFunction(object sender, EventArgs e){...}
-	//this.MagnetTriggered += myFunction;
-	public event EventHandler MagnetTriggered;
-
-	protected virtual void OnMagnetTriggered()
-	{
-		if(MagnetTriggered != null)
-			MagnetTriggered(this, EventArgs.Empty);
-	}
-	
-	private bool mbMagnetDown = false;
 	
 	void Update()
 	{
@@ -181,7 +168,6 @@ public class OpenDiveSensor : MonoBehaviour
 		rot.z = -q1;
 		rot.w = q0;
 
-		get_magnet(ref magnet_detected,ref magnet_trigger,ref magnet_value);
 #elif UNITY_IPHONE
 		DiveUpdateGyroData();
 		get_q(ref q0,ref q1,ref q2,ref q3);
@@ -190,7 +176,6 @@ public class OpenDiveSensor : MonoBehaviour
 		rot.z=-q1;
 		rot.w=q0;
 
-		get_magnet(ref magnet_detected,ref magnet_trigger,ref magnet_value);
 		get_m(ref m0,ref m1,ref m2);
 #endif
 
@@ -200,15 +185,19 @@ public class OpenDiveSensor : MonoBehaviour
 			{
 				if(AddRotationGameobject){
 					if (is_tablet==1){
-						transform.rotation = RotationGameobject.transform.rotation * (centerTransition * rot)* Quaternion.AngleAxis(90,Vector3.forward);
+						raw = RotationGameobject.transform.rotation * (centerTransition * rot)* Quaternion.AngleAxis(90,Vector3.forward);
+						player.Rotation.Set(new Vector2 (raw.eulerAngles.x, raw.eulerAngles.y));
 					}else{
-						transform.rotation = RotationGameobject.transform.rotation * (centerTransition * rot);
+						raw = RotationGameobject.transform.rotation * (centerTransition * rot);
+						player.Rotation.Set(new Vector2 (raw.eulerAngles.x, raw.eulerAngles.y));
 					}
 				}else{
 					if (is_tablet==1){
-						transform.rotation = centerTransition * rot * Quaternion.AngleAxis(90,Vector3.forward);
+						raw = centerTransition * rot * Quaternion.AngleAxis(90,Vector3.forward);
+						player.Rotation.Set(new Vector2 (raw.eulerAngles.x, raw.eulerAngles.y));
 					}else{
-						transform.rotation = centerTransition * rot;
+						raw = centerTransition * rot;
+						player.Rotation.Set(new Vector2 (raw.eulerAngles.x, raw.eulerAngles.y));
 					}
 				}
 			}
@@ -216,70 +205,23 @@ public class OpenDiveSensor : MonoBehaviour
 		{
 			if(AddRotationGameobject)
 			if (is_tablet==1){
-				transform.rotation= RotationGameobject.transform.rotation * rot * Quaternion.AngleAxis(90,Vector3.forward);
-			} else transform.rotation = RotationGameobject.transform.rotation * rot;
+				raw = RotationGameobject.transform.rotation * rot * Quaternion.AngleAxis(90,Vector3.forward);
+				player.Rotation.Set(new Vector2 (raw.eulerAngles.x, raw.eulerAngles.y));
+			} else {
+				raw = RotationGameobject.transform.rotation * rot;
+				player.Rotation.Set(new Vector2 (raw.eulerAngles.x, raw.eulerAngles.y));
+			}
 			else if (is_tablet==1){
-				transform.rotation= rot * Quaternion.AngleAxis(90,Vector3.forward);
-			} else transform.rotation = rot;
-		}
-
-
-		if(DInput.magnet_trigger != magnet_trigger && magnet_trigger == 1)
-			DInput.magnet_trigger_posedge = true;
-		else
-			DInput.magnet_trigger_posedge = false;
-		if(DInput.magnet_trigger != magnet_trigger && magnet_trigger == 0)
-			DInput.magnet_trigger_negedge = true;
-		else
-			DInput.magnet_trigger_negedge = false;
-		DInput.magnet_trigger = magnet_trigger;
-
-		if(DInput.use_analog_value)
-		{
-			DInput.magnet_value = magnet_value;
-			if(DInput.invert)
-				DInput.magnet_value = 1 - magnet_value;
-		}
-
-		{
-			if(!mbMagnetDown)
-			{
-#if UNITY_EDITOR
-				if(Input.GetKey(KeyCode.Space) || Input.GetMouseButtonDown(0))
-#else
-				if(DInput.magnet_trigger == 1 || Input.GetMouseButtonDown(0))
-#endif
-				{
-					mbMagnetDown = true;
-				}
-			}
-			else
-			{
-#if UNITY_EDITOR
-				if(!Input.GetKey(KeyCode.Space))
-#else
-				if(DInput.magnet_trigger != 1)
-#endif
-				{
-					OnMagnetTriggered();
-					mbMagnetDown = false;
-				}
+				raw = rot * Quaternion.AngleAxis(90,Vector3.forward);
+				player.Rotation.Set(new Vector2 (raw.eulerAngles.x, raw.eulerAngles.y));
+			} else {
+				raw = rot;
+				player.Rotation.Set(new Vector2 (raw.eulerAngles.x, raw.eulerAngles.y));
 			}
 		}
 	}
 
-	void OnGUI()
-	{
-		if(mbShowErrorMessage){
-			if(GUI.Button(new Rect(0, 0, Screen.width, Screen.height), "button"))
-				mbShowErrorMessage = false;
 
-			if(NoGyroTexture != null){
-				int liHeight = (int)(Screen.height * 0.9);
-				GUI.DrawTexture(new Rect((Screen.width - liHeight) / 2, (Screen.height - liHeight) / 2, liHeight, liHeight), NoGyroTexture, ScaleMode.StretchToFill, true, 0);
-			}
-		}
-	}
 
 	void OnApplicationQuit(){
 #if UNITY_EDITOR
@@ -294,11 +236,6 @@ public static class DInput
 {
 	public static bool use_cardboard_trigger = true;
 	public static bool use_analog_value = false;
-	public static bool magnet_detected = false;
-	public static int magnet_trigger = 0;
-	public static bool magnet_trigger_posedge = false;
-	public static bool magnet_trigger_negedge = false;
-	public static float magnet_value = 0.0f;
 	public static bool invert = false;
 	public static bool use_IPD_Correction;
 	public static float IPDCorrectionValue = 0;
