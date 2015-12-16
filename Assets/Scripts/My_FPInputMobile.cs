@@ -324,7 +324,7 @@ public class My_FPInputMobile : My_FPInput
         {	
         	var camRot = gyro.attitude;
 
-            player.Rotation.Set(new Vector2 (camRot.eulerAngles.x, camRot.eulerAngles.y)); // x = pitch, y = yaw
+            player.Rotation.Set(new Vector2 (camRot.eulerAngles.y, camRot.eulerAngles.x)); // x = pitch, y = yaw
 
 
         }
