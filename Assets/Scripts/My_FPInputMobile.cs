@@ -15,6 +15,17 @@ using System.Collections.Generic;
 
 public class My_FPInputMobile : My_FPInput
 {
+	//gyro variables
+
+    private bool gyroBool;
+    private Gyroscope gyro;
+    private Quaternion rotFix;
+    private Vector3 initial = new Vector3(90, 180, 0);
+    vp_FPPlayerEventHandler player;
+
+
+
+    //input mobile variables
 
 	protected vp_FPCamera m_FPCamera = null;
 	public vp_FPCamera FPCamera
@@ -33,7 +44,30 @@ public class My_FPInputMobile : My_FPInput
 	/// </summary>
 	protected override void Start()
 	{
-		
+		/// - starting the gyro
+		player = GameObject.FindObjectOfType<vp_FPPlayerEventHandler>();
+
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        gyroBool = SystemInfo.supportsGyroscope;
+
+        Debug.Log("gyro bool = " + gyroBool.ToString());
+
+        if (gyroBool)
+        {
+            gyro = Input.gyro;
+            gyro.enabled = true;
+
+
+        }
+        else
+        {
+            Debug.Log("No Gyro Support");
+        }
+
+        ///
+
 		FPCamera.SetRotation(FPCamera.Transform.eulerAngles, false, true);
 		FPPlayer.Zoom.MinPause = .25f;
 		FPPlayer.Zoom.MinDuration = .25f;
@@ -279,6 +313,21 @@ public class My_FPInputMobile : My_FPInput
 			Screen.lockCursor = !Screen.lockCursor;
 
 	}
-	
+
+
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (gyroBool)
+        {	
+        	var camRot = gyro.attitude;
+
+            player.Rotation.Set(new Vector2 (camRot.eulerAngles.x, camRot.eulerAngles.y)); // x = pitch, y = yaw
+
+
+        }
+    }
 }
 

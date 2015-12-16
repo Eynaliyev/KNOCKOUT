@@ -17,7 +17,7 @@ public class HeadTrack : MonoBehaviour
 
         gyroBool = SystemInfo.supportsGyroscope;
 
-        Debug.Log("gyro bool = " + gyroBool.ToString());
+     //   Debug.Log("gyro bool = " + gyroBool.ToString());
 
         if (gyroBool)
         {
@@ -28,7 +28,7 @@ public class HeadTrack : MonoBehaviour
         }
         else
         {
-            Debug.Log("No Gyro Support");
+       //     Debug.Log("No Gyro Support");
         }
     }
     // Update is called once per frame
