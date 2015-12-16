@@ -294,11 +294,7 @@ public class vp_BodyAnimator : MonoBehaviour
 	protected virtual void Awake()
 	{
 
-#if UNITY_IPHONE || UNITY_ANDROID
-		Debug.LogError("Error ("+this+") This script from base UFPS is intended for desktop and not supported on mobile. Are you attempting to use a PC/Mac player prefab on IOS/Android?");
-		Component.DestroyImmediate(this);
-		return;
-#endif
+
 
 		if (!IsValidSetup())
 			return;

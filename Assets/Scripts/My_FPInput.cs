@@ -421,7 +421,7 @@ public class My_FPInput : vp_Component
 
         gyroBool = SystemInfo.supportsGyroscope;
 
-        Debug.Log("gyro bool = " + gyroBool.ToString());
+     //   Debug.Log("gyro bool = " + gyroBool.ToString());
 
         if (gyroBool)
         {
@@ -431,7 +431,7 @@ public class My_FPInput : vp_Component
         }
         else
         {
-            Debug.Log("No Gyro Support");
+       //     Debug.Log("No Gyro Support");
         }
     }
 
