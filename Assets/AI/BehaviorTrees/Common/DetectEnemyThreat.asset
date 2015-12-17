@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1227330239, guid: 9fa2ecd1ff2ad394281dd3bf72c5b76e, type: 3}
+  m_Name: DetectEnemyThreat
+  m_EditorClassIdentifier: 
+  _dataSerializer:
+    _serializedData: <scriptableobject version="1.2" type="RAIN.BehaviorTrees.BTAsset"><fields><field
+      value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;DetectEnemyThreat&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;Detect and Set Enemy Position&quot; debugbreak=&quot;False&quot;&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;success&quot; priority=&quot;&quot;
+      name=&quot;Find Enemy&quot; debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot;
+      priority=&quot;&quot; parametervalues=&quot;ZW5lbXk=&quot; parameters=&quot;RW5lbXlWYXJpYWJsZQ==&quot;
+      namespace=&quot;(global)&quot; name=&quot;Detect Enemy&quot; debugbreak=&quot;False&quot;
+      classname=&quot;DetectEnemy&quot; /&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Attack Threat&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;evaluate&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;threat != null&quot;
+      expression=&quot;threat != null&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;enemy = threat&quot; expression=&quot;enemy = threat&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/sequencer&gt;&lt;/selector&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemyPosition = position(enemy)&quot;
+      expression=&quot;enemyPosition = position(enemy)&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy
+      != null&quot; debugbreak=&quot;False&quot; constraint=&quot;enemy != null&quot;&gt;&lt;timer
+      waitforsec=&quot;3&quot; returnvalue=&quot;success&quot; name=&quot;timer&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;/constraint&gt;&lt;/sequencer&gt;&lt;/behaviortree&gt;"
+      type="System.String" id="treeData" /><field type="System.Array" id="treeBindings"
+      elementtype="System.String" /></fields><references /></scriptableobject>
+    _serializedGameObjects: []
+    _serializedCustomData: []

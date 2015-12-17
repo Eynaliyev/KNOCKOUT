@@ -1,0 +1,221 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1227330239, guid: 9fa2ecd1ff2ad394281dd3bf72c5b76e, type: 3}
+  m_Name: AttackerBehavior
+  m_EditorClassIdentifier: 
+  _dataSerializer:
+    _serializedData: <scriptableobject version="1.2" type="RAIN.BehaviorTrees.BTAsset"><fields><field
+      value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;AttackerBehavior&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;root&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;dead == false&quot;
+      debugbreak=&quot;False&quot; constraint=&quot;dead == false&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;running&quot;
+      name=&quot;root&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;treebinding
+      repeatuntil=&quot;running&quot; name=&quot;DetectAndSetEnemyPosition&quot; debugbreak=&quot;False&quot;
+      binding=&quot;DetectEnemyThreat&quot; /&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;running&quot; name=&quot;Do Command Behavior&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;command ==&amp;quot;form
+      up&amp;quot;&quot; debugbreak=&quot;False&quot; constraint=&quot;command ==
+      &amp;quot;form up&amp;quot;&quot;&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;moveConstraint = &amp;quot;formation&amp;quot;&quot;
+      expression=&quot;moveConstraint = &amp;quot;formation&amp;quot;&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
+      name=&quot;getEnemyFromPlayer = false&quot; expression=&quot;getEnemyFromPlayer
+      = false&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;command = &amp;quot;none&amp;quot;&quot;
+      expression=&quot;command = &amp;quot;none&amp;quot;&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;command == &amp;quot;cover me&amp;quot;&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;command == &amp;quot;cover me&amp;quot;&quot;&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; name=&quot;getEnemyFromPlayer
+      = true&quot; expression=&quot;getEnemyFromPlayer = true&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
+      name=&quot;command = &amp;quot;none&amp;quot;&quot; expression=&quot;command
+      = &amp;quot;none&amp;quot;&quot; debugbreak=&quot;False&quot; /&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;command == &amp;quot;attack&amp;quot;&quot;
+      debugbreak=&quot;False&quot; constraint=&quot;command == &amp;quot;attack&amp;quot;&quot;&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; name=&quot;moveConstraint
+      = &amp;quot;none&amp;quot;&quot; expression=&quot;moveConstraint = &amp;quot;none&amp;quot;&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;getEnemyFromPlayer = false&quot; expression=&quot;getEnemyFromPlayer
+      = false&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;command = &amp;quot;none&amp;quot;&quot;
+      expression=&quot;command = &amp;quot;none&amp;quot;&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;command == &amp;quot;take cover&amp;quot;&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;command == &amp;quot;take cover&amp;quot;&quot;&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; name=&quot;moveConstraint
+      = &amp;quot;cover&amp;quot;&quot; expression=&quot;moveConstraint = &amp;quot;cover&amp;quot;&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;getEnemyFromPlayer = false&quot; expression=&quot;getEnemyFromPlayer
+      = false&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;command = &amp;quot;none&amp;quot;&quot;
+      expression=&quot;command = &amp;quot;none&amp;quot;&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;command == &amp;quot;flank&amp;quot;&quot; debugbreak=&quot;False&quot;
+      constraint=&quot;command == &amp;quot;flank&amp;quot;&quot;&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; name=&quot;moveConstraint
+      = &amp;quot;flank&amp;quot;&quot; expression=&quot;moveConstraint = &amp;quot;flank&amp;quot;&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;getEnemyFromPlayer = false&quot; expression=&quot;getEnemyFromPlayer
+      = false&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; name=&quot;command = &amp;quot;none&amp;quot;&quot;
+      expression=&quot;command = &amp;quot;none&amp;quot;&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/constraint&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;default behavior&quot; debugbreak=&quot;False&quot;&gt;&lt;expression
+      returnvalue=&quot;evaluate&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;command == null&quot; expression=&quot;command == null&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;command = &amp;quot;form up&amp;quot;&quot;
+      expression=&quot;command = &amp;quot;form up&amp;quot;&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/sequencer&gt;&lt;/selector&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;any&quot; repeatuntil=&quot;running&quot; name=&quot;Squad Behavior&quot;
+      fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;running&quot; name=&quot;Set Enemy&quot; debugbreak=&quot;False&quot;&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;Set Enemy from Player or Sensor&quot; debugbreak=&quot;False&quot;&gt;&lt;sequencer
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;Set Enemy From Player&quot; debugbreak=&quot;False&quot;&gt;&lt;expression
+      returnvalue=&quot;evaluate&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;getEnemyFromPlayer == true&quot; expression=&quot;getEnemyFromPlayer
+      == true&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy = playerThreat&quot;
+      expression=&quot;enemy = playerThreat&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression
+      returnvalue=&quot;evaluate&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;enemy != null&quot; expression=&quot;enemy != null&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/sequencer&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
+      parametervalues=&quot;ZW5lbXk=&quot; parameters=&quot;RW5lbXlWYXJpYWJsZQ==&quot;
+      namespace=&quot;(global)&quot; name=&quot;Detect Enemy&quot; debugbreak=&quot;False&quot;
+      classname=&quot;DetectEnemy&quot; /&gt;&lt;/selector&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemyPosition = position(enemy)&quot;
+      expression=&quot;enemyPosition = position(enemy)&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;Restart on missing enemy or timer&quot; fail=&quot;any&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;evaluate&quot;
+      repeatuntil=&quot;failure&quot; name=&quot;enemy != null&quot; expression=&quot;enemy
+      != null&quot; debugbreak=&quot;False&quot; /&gt;&lt;timer waitforsec=&quot;3&quot;
+      returnvalue=&quot;success&quot; name=&quot;timer&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/parallel&gt;&lt;/sequencer&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;running&quot; name=&quot;Move&quot; debugbreak=&quot;False&quot;&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;moveConstraint ==
+      &amp;quot;formation&amp;quot;&quot; debugbreak=&quot;False&quot; constraint=&quot;moveConstraint
+      == &amp;quot;formation&amp;quot;&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;running&quot; name=&quot;Move in formation&quot;
+      fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot;
+      parametervalues=&quot;bXlDb21tYW5kZXIAZm9ybWF0aW9uTW92ZVRhcmdldAAAImNsb3Nlc3Qi&quot;
+      parameters=&quot;Q29tbWFuZGVyAE1vdmVUYXJnZXRWYXJpYWJsZQBGYWNlVGFyZ2V0VmFyaWFibGUARmlyc3RPckNsb3Nlc3Q=&quot;
+      namespace=&quot;(global)&quot; name=&quot;SetFormationMoveTarget&quot; debugbreak=&quot;False&quot;
+      classname=&quot;SetFormationMoveTarget&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
+      parametervalues=&quot;MC41ADIAcnVuU3BlZWQAc3ByaW50U3BlZWQAZm9ybWF0aW9uTW92ZVRhcmdldABwYXRyb2xTcGVlZA==&quot;
+      parameters=&quot;Q2xvc2VFbm91Z2hEaXN0YW5jZQBNYXhEaXN0YW5jZQBXYWxrU3BlZWQAUnVuU3BlZWQATW92ZVRhcmdldFZhcmlhYmxlAE1vdmVTcGVlZFZhcmlhYmxl&quot;
+      namespace=&quot;(global)&quot; name=&quot;Set Patrol Speed&quot; debugbreak=&quot;False&quot;
+      classname=&quot;SetPatrolSpeed&quot; /&gt;&lt;selector usepriorities=&quot;False&quot;
+      repeatuntil=&quot;running&quot; name=&quot;Set Look At&quot; debugbreak=&quot;False&quot;&gt;&lt;sequencer
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;evaluate&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;patrolSpeed &amp;lt;
+      sprintSpeed&quot; expression=&quot;patrolSpeed &amp;lt; sprintSpeed&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;lookAt = enemy&quot; expression=&quot;lookAt
+      = enemyPosition&quot; debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;lookAt = null&quot; expression=&quot;lookAt = null&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/selector&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;running&quot;
+      name=&quot;move&quot; movetarget=&quot;formationMoveTarget&quot; movespeed=&quot;patrolSpeed&quot;
+      facetarget=&quot;lookAt&quot; debugbreak=&quot;False&quot; closeenoughdistance=&quot;0.5&quot;
+      closeenoughangle=&quot;&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;moveConstraint ==
+      &amp;quot;cover&amp;quot;&quot; debugbreak=&quot;False&quot; constraint=&quot;moveConstraint
+      == &amp;quot;cover&amp;quot;&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;any&quot; repeatuntil=&quot;&quot; name=&quot;Find and move to
+      cover&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;selector
+      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;Find Cover
+      or Switch Mode&quot; debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot;
+      priority=&quot;&quot; parametervalues=&quot;ZW5lbXlQb3NpdGlvbgBjb3ZlclBvc2l0aW9u&quot;
+      parameters=&quot;RW5lbXlWYXJpYWJsZQBDb3ZlclZhcmlhYmxl&quot; namespace=&quot;(global)&quot;
+      name=&quot;Find Cover&quot; debugbreak=&quot;False&quot; classname=&quot;FindCoverPoint&quot;
+      /&gt;&lt;expression returnvalue=&quot;success&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;expression&quot; expression=&quot;moveConstraint
+      = &amp;quot;formation&amp;quot;&quot; debugbreak=&quot;False&quot; /&gt;&lt;/selector&gt;&lt;sequencer
+      usepriorities=&quot;False&quot; repeatuntil=&quot;running&quot; name=&quot;Attack
+      from Cover&quot; debugbreak=&quot;False&quot;&gt;&lt;move turnspeed=&quot;&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;move&quot; movetarget=&quot;coverPosition&quot;
+      movespeed=&quot;sprintSpeed&quot; facetarget=&quot;enemy&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;action
+      repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;ZW5lbXlQb3NpdGlvbgBmYWNlVGFyZ2V0&quot;
+      parameters=&quot;RW5lbXlWYXJpYWJsZQBGYWNlVmFyaWFibGU=&quot; namespace=&quot;(global)&quot;
+      name=&quot;Find Cover face direction&quot; debugbreak=&quot;False&quot; classname=&quot;FindCoverFaceDirection&quot;
+      /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;running&quot; priority=&quot;&quot;
+      name=&quot;face&quot; movetarget=&quot;&quot; movespeed=&quot;&quot; facetarget=&quot;faceTarget&quot;
+      debugbreak=&quot;False&quot; closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot;
+      /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;moveConstraint == &amp;quot;flank&amp;quot;&quot;
+      debugbreak=&quot;False&quot; constraint=&quot;moveConstraint == &amp;quot;flank&amp;quot;&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      name=&quot;parallel&quot; fail=&quot;any&quot; debugbreak=&quot;False&quot;&gt;&lt;action
+      repeatuntil=&quot;&quot; parametervalues=&quot;YXR0YWNrVGFyZ2V0ACJpbnRlcm1lZGlhdGUi&quot;
+      parameters=&quot;TW92ZVRhcmdldFZhcmlhYmxlAEZpcnN0T3JDbG9zZXN0&quot; namespace=&quot;(global)&quot;
+      name=&quot;SetAttackPosition&quot; debugbreak=&quot;False&quot; classname=&quot;SetAttackMoveTarget&quot;
+      /&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;Set
+      Move Target&quot; debugbreak=&quot;False&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;If no enemy use mission
+      goal&quot; debugbreak=&quot;False&quot;&gt;&lt;expression returnvalue=&quot;evaluate&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;enemy == null&quot;
+      expression=&quot;enemy == null&quot; debugbreak=&quot;False&quot; /&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;expression&quot; expression=&quot;waypointTarget = navigationtarget(&amp;quot;MissionGoal&amp;quot;)&quot;
+      debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;expression returnvalue=&quot;success&quot;
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Use attack target&quot;
+      expression=&quot;waypointTarget = attackTarget&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/selector&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
+      name=&quot;sequencer&quot; debugbreak=&quot;False&quot;&gt;&lt;waypointpath
+      waypointsetvariable=&quot;&amp;quot;Flank&amp;quot;&quot; waypointactiontype=&quot;path&quot;
+      traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; pathtargetvariable=&quot;waypointTarget&quot; name=&quot;waypointpath&quot;
+      movetargetvariable=&quot;flankTarget&quot; debugbreak=&quot;False&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;move&quot; movetarget=&quot;flankTarget&quot;
+      movespeed=&quot;sprintSpeed&quot; facetarget=&quot;&quot; debugbreak=&quot;False&quot;
+      closeenoughdistance=&quot;2&quot; closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpath&gt;&lt;expression
+      returnvalue=&quot;success&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;moveConstraint = &amp;quot;none&amp;quot;&quot; expression=&quot;moveConstraint
+      = &amp;quot;none&amp;quot;&quot; debugbreak=&quot;False&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;moveConstraint ==
+      &amp;quot;none&amp;quot;&quot; debugbreak=&quot;False&quot; constraint=&quot;moveConstraint
+      == &amp;quot;none&amp;quot;&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;YXR0YWNrVGFyZ2V0ACJjbG9zZXN0Ig==&quot;
+      parameters=&quot;TW92ZVRhcmdldFZhcmlhYmxlAEZpcnN0T3JDbG9zZXN0&quot; namespace=&quot;(global)&quot;
+      name=&quot;SetAttackPosition&quot; debugbreak=&quot;False&quot; classname=&quot;SetAttackMoveTarget&quot;
+      /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;running&quot; name=&quot;move&quot;
+      movetarget=&quot;attackTarget&quot; movespeed=&quot;sprintSpeed&quot; facetarget=&quot;enemy&quot;
+      debugbreak=&quot;False&quot; closeenoughdistance=&quot;2&quot; closeenoughangle=&quot;&quot;
+      /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;constraint repeatuntil=&quot;running&quot;
+      name=&quot;Attack if Enemy Known&quot; debugbreak=&quot;False&quot; constraint=&quot;enemy
+      != null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;any&quot;
+      repeatuntil=&quot;&quot; name=&quot;Aim and Attack&quot; fail=&quot;any&quot;
+      debugbreak=&quot;False&quot;&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;QWltaW5nADEALjIAMA==&quot;
+      parameters=&quot;TWVjYW5pbVBhcmFtZXRlcgBTdGFydFZhbHVlAFN0YXJ0RGFtcFRpbWUAU3RvcFZhbHVl&quot;
+      namespace=&quot;(global)&quot; name=&quot;Set Aiming&quot; debugbreak=&quot;False&quot;
+      classname=&quot;MecanimStateFloat&quot; /&gt;&lt;treebinding repeatuntil=&quot;&quot;
+      name=&quot;Fire Weapon&quot; debugbreak=&quot;False&quot; binding=&quot;Fire
+      Weapon&quot; /&gt;&lt;/parallel&gt;&lt;timer waitforsec=&quot;random(1,2)&quot;
+      returnvalue=&quot;success&quot; name=&quot;timer&quot; debugbreak=&quot;False&quot;
+      /&gt;&lt;/constraint&gt;&lt;/parallel&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;treebinding
+      repeatuntil=&quot;running&quot; priority=&quot;&quot; name=&quot;Death&quot;
+      debugbreak=&quot;False&quot; binding=&quot;Death&quot; /&gt;&lt;/selector&gt;&lt;/behaviortree&gt;"
+      type="System.String" id="treeData" /><field type="System.Array" id="treeBindings"
+      elementtype="System.String"><field value="DetectEnemyThreat" type="System.String"
+      id="element0" /><field value="Fire Weapon" type="System.String" id="element1"
+      /><field value="Death" type="System.String" id="element2" /></field></fields><references
+      /></scriptableobject>
+    _serializedGameObjects: []
+    _serializedCustomData: []

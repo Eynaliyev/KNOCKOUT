@@ -1,0 +1,7 @@
+Squad Command: Advanced Warfighter AI version 1.0.6 Release Notes
+-----------------------------------------------------------------
+
+Upgraded to Unity 5
+Upgraded to RAIN 2.1.11
+Regenerated the Navigation Meshes for better height accuracy
+Upgraded all of the legacy particle emitters to Particle Systems

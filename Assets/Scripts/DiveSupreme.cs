@@ -178,7 +178,7 @@ public class DiveSupreme : MonoBehaviour
 
 		get_m(ref m0,ref m1,ref m2);
 #endif
-
+//disable this is mouselook is activated?
 		if(mbUseGyro)
 		if(Time.timeSinceLevelLoad > 0.1f)
 			if(correctCenterTransition)
@@ -220,8 +220,6 @@ public class DiveSupreme : MonoBehaviour
 			}
 		}
 	}
-
-
 
 	void OnApplicationQuit(){
 #if UNITY_EDITOR
