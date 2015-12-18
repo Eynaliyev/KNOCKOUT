@@ -7,3 +7,5 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/SquadCommand/Scenes/Patrol.unity
+  - enabled: 1
+    path: Assets/UFPS/Base/Content/Levels/CleanScene/UFPS_CleanScene.unity
