@@ -2572,7 +2572,7 @@ GameObject:
   - 114: {fileID: 11483374}
   - 114: {fileID: 11455174}
   m_Layer: 30
-  m_Name: AmandaAdvancedPlayerMobile 2
+  m_Name: 0.02AmandaAdvancedPlayerMobile 2 - no fps mesh - looks meh in 3rd
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7620,7 +7620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ItemRecords:
     itemList: 56
-    helpbox: 144
+    helpbox: 166
   m_ItemCaps:
     itemList: 219
     helpbox: 111
@@ -9575,7 +9575,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_ItemRecords.helpbox
+      value: 166
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 185212}

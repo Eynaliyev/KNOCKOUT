@@ -226,7 +226,7 @@ public class HealthElement : CustomAIElement
     /// <param name="aDamage">A struct containing damage info</param>
     public void ReceiveDamage(Damage aDamage)
     {
-        //Check to see if the damage came from an AI shooter
+/*        //Check to see if the damage came from an AI shooter
         AIRig tShooter = aDamage.damageFrom.GetComponentInChildren<AIRig>();
 
         // No friendly fire, so ignore damage from the same team
@@ -237,6 +237,25 @@ public class HealthElement : CustomAIElement
 
             if (tShooterTeam != null && tMyTeam != null && tShooterTeam.Team == tMyTeam.Team)
                 return;
+        }*/
+
+        //replaced a.i. rig shooter with the following becasue of the tutorial
+    //https://redhwk.wordpress.com/rain-tutorial-squad-command-and-ufps/   
+
+    //AIRig tShooter = aDamage.damageFrom.GetComponentInChildren<AIRig>;
+        AIRig tShooter = null;
+        //Check to see if the damage came from an AI shooter
+        if (aDamage.damageFrom != null)
+        {
+            tShooter = aDamage.damageFrom.GetComponentInChildren<AIRig>();
+        }
+        else
+        {
+            // Otherwise take damage
+            //Reset the regeneration delay and reduce current health
+            _regenTime = RegenerationDelay;
+            CurrentHealth = Mathf.Max(MinHealth, Mathf.Min(CurrentHealth - aDamage.damage, MaxHealth));
+            return;
         }
 
         // Otherwise take damage
