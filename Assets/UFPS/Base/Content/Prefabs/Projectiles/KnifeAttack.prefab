@@ -129,7 +129,7 @@ MonoBehaviour:
   Force: 50
   Damage: 5
   DamageMethodName: Damage
-  RequireDamageHandler: 1
+  RequireDamageHandler: 0
   m_SparkFactor: .100000001
   m_ImpactPrefab: {fileID: 100000, guid: 4c0c9fd98bd3e1f49b7dc272c0f752af, type: 2}
   m_DustPrefab: {fileID: 0}
@@ -150,7 +150,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: RequireDamageHandler
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
