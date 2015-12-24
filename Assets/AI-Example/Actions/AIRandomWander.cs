@@ -33,7 +33,7 @@ public class AIRandomWander : RAINAction
 			loc = new Vector3(ai.Kinematic.Position.x + Random.Range(-5f, 5f),
 				ai.Kinematic.Position.y,
 				ai.Kinematic.Position.z + Random.Range(-5f, 5f));
-			found = NavigationManager.instance.GraphsForPoints(ai.Kinematic.Position, loc, ai.Motor.StepUpHeight, NavigationManager.GraphType.Navmesh, ((BasicNavigator)ai.Navigator).GraphTags);
+			found = NavigationManager.Instance.GraphsForPoints(ai.Kinematic.Position, loc, ai.Motor.StepUpHeight, NavigationManager.GraphType.Navmesh, ((BasicNavigator)ai.Navigator).GraphTags);
 
 		} while ((Vector3.Distance(ai.Kinematic.Position, loc) < 2f) || (found.Count == 0));
 
